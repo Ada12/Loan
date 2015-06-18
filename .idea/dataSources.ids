@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - loan@localhost" uuid="11c2a743-7530-40e9-95e5-11d2883e89bb">
+    <database-info product="MySQL" version="5.6.21-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="loan"/>
+    <table name="loan_info" schema="" catalog="loan" type="TABLE">
+      <column name="object_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="cash_deposit" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="length" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date_end" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="interest_rate" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="loan_category" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="method_validiation_number" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="service_payment" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="amount" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="pledge_method" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date_start" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="loan_to" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="loan_from" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="object_id"/>
+      <exported-key name="fk_id" table="repay_info" schema="" catalog="loan" columns="loan_info_object_id"/>
+      <index name="objectId_UNIQUE" unique="true" columns="object_id"/>
+    </table>
+    <table name="repay_info" schema="" catalog="loan" type="TABLE">
+      <column name="object_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="payback_amount" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="length" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date_early" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="date_end" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="interest_rate" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="management_payment" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="service_payment" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="amount" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="payback_category" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cash_deposit" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="date_start" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="flag" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="loan_from" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="loan_info_object_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="object_id"/>
+      <foreign-key name="fk_id" columns="loan_info_object_id" ref-table="loan_info" ref-schema="" ref-catalog="loan" ref-columns="object_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_id_idx" unique="false" columns="loan_info_object_id"/>
+    </table>
+  </data-source>
+</component>
